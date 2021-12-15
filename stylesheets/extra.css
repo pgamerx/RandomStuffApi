@@ -1,0 +1,5 @@
+.http-request {
+    color: orange !important;
+    cursor: default !important;
+    font: monospace !important; /* change this to sans-serif or other font if you want */
+  }
