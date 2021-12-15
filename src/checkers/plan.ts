@@ -32,8 +32,44 @@ export const isPro = async (key: string) => {
   return true;
 };
 
-export const isUltra = async (key: string) => {};
+export const isUltra = async (key: string) => {
+  const info = await premium.findOne({
+    key: key,
+  });
+  if (!info) {
+    return false;
+  }
+  if (info.type !== "ultra") {
+    return false;
+  }
 
-export const isBiz = async (key: string) => {};
+  return true;
+};
 
-export const isMega = async (key: string) => {};
+export const isBiz = async (key: string) => {
+  const info = await premium.findOne({
+    key: key,
+  });
+  if (!info) {
+    return false;
+  }
+  if (info.type !== "biz") {
+    return false;
+  }
+
+  return true;
+};
+
+export const isMega = async (key: string) => {
+  const info = await premium.findOne({
+    key: key,
+  });
+  if (!info) {
+    return false;
+  }
+  if (info.type !== "mega") {
+    return false;
+  }
+
+  return true;
+};
