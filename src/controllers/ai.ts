@@ -22,11 +22,11 @@ const getAIResponse = async (
   if (!AuthKey)
     return res
       .status(403)
-      .send("Authorization key is not present, contact for more support.");
+      .json({error: "Authorization key is not present, contact for more support."});
   if (!await isNormal(AuthKey) && !await isPremium(AuthKey))
     return res
       .status(403)
-      .send("Your key is invalid, contact for more support.");
+      .json({error: "Your key is invalid, contact for more support."});
   const msg = req.query.msg as string;
   const id = req.query.id ? req.query.id : 1
   if (!msg) return res.status(400).send("Message is not present.")
