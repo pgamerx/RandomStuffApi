@@ -18,6 +18,10 @@ const getAIResponse = async (
   res: Response,
   next: NextFunction
 ) => {
+  const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
   const AuthKey = req.get("Authorization")! as string;
   if (!AuthKey)
     return res

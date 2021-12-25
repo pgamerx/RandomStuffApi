@@ -1,3 +1,8 @@
+/*
+Deprecated
+*/
+
+/*
 import rateLimit from "express-rate-limit";
 import { Request, Response } from "express";
 
@@ -43,3 +48,4 @@ export function normal_min() {
 export function normal_day() {
   return normal_day_rl;
 }
+*/

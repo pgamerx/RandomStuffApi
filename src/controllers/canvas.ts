@@ -4,6 +4,11 @@ const fetch = require("node-fetch");
 import { isNormal, isPremium } from "../checkers/plan";
 const canvacord = require("canvacord");
 
+
+/** Importing DotEnv for process.env */
+import * as dotenv from "dotenv";
+dotenv.config();
+
 declare namespace Express {
   export interface Request {
     path: any;
@@ -20,6 +25,10 @@ const canvasMethod = async (
   res: Response,
   next: NextFunction
 ) => {
+  const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
   const AuthKey = req.get("Authorization")! as string;
   if (!AuthKey)
     return res
@@ -56,13 +65,13 @@ const canvasMethod = async (
     if (!img1) return res.status(400).send(`First image is missing`);
     let response_buffer = await canvacord.Canvas[method as any](img1);
     let response_base64 = response_buffer.toString("base64");
-    return res.json([{ base64: response_base64 }]);
+    return res.json({ base64: response_base64 });
   } else if (list2.includes(method as any)) {
     if (!img1) return res.status(400).send(`First image is missing`);
     if (!img2) return res.status(400).send(`Second image is missing`);
     let response_buffer = await canvacord.Canvas[method as any](img1, img2);
     let response_base64 = response_buffer.toString("base64");
-    return res.json([{ base64: response_base64 }]);
+    return res.json({ base64: response_base64 });
   } else if (list3.includes(method as any)) {
     if (!img1) return res.status(400).send(`First image is missing`);
     if (!img2) return res.status(400).send(`Second image is missing`);
