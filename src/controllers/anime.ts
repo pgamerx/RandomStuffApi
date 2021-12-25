@@ -32,6 +32,10 @@ const getHappyAnime = async (req: Request, res: Response, next: NextFunction) =>
 }
 
 const getHiAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -53,6 +57,11 @@ const getHiAnime = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 const getHugAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
+    
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -74,6 +83,10 @@ const getHugAnime = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 const getKissAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -94,6 +107,10 @@ const getKissAnime = async (req: Request, res: Response, next: NextFunction) => 
     );
 }
 const getNervousAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -114,6 +131,10 @@ const getNervousAnime = async (req: Request, res: Response, next: NextFunction) 
     );
 }
 const getPatAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -134,6 +155,10 @@ const getPatAnime = async (req: Request, res: Response, next: NextFunction) => {
     );
 }
 const getPunchAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -154,6 +179,10 @@ const getPunchAnime = async (req: Request, res: Response, next: NextFunction) =>
     );
 }
 const getSlapAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -174,6 +203,10 @@ const getSlapAnime = async (req: Request, res: Response, next: NextFunction) => 
     );
 }
 const getRunAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -194,6 +227,10 @@ const getRunAnime = async (req: Request, res: Response, next: NextFunction) => {
     );
 }
 const getCryAnime = async (req: Request, res: Response, next: NextFunction) => {
+      const private_key = process.env.PRIVATE_KEY! as string;
+  const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+  if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+  
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
