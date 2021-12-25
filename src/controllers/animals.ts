@@ -34,6 +34,10 @@ const getCatImage = async (req: Request, res: Response, next: NextFunction) => {
 
 // Make a similar function getDogImage 
 const getDogImage = async (req: Request, res: Response, next: NextFunction) => {
+        const private_key = process.env.PRIVATE_KEY! as string;
+    const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+    if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+   
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -55,6 +59,10 @@ const getDogImage = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 const getWolfImage = async (req: Request, res: Response, next: NextFunction) => {
+        const private_key = process.env.PRIVATE_KEY! as string;
+    const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+    if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+   
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
@@ -76,6 +84,10 @@ const getWolfImage = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 const getFoxImage = async (req: Request, res: Response, next: NextFunction) => {
+        const private_key = process.env.PRIVATE_KEY! as string;
+    const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private")
+    if(RapidApi !== private_key) return res.status(400).send("You are only allowed to make requests through RapidApi, contact for more support.")
+   
     const AuthKey = req.get("Authorization")! as string;
     const limit = req.query.limit
     if(Number(limit)>12 || Number(limit)<1 || !limit){
