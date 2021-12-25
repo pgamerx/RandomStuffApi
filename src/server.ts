@@ -4,6 +4,8 @@ import express, { Express } from "express";
 import morgan from "morgan";
 import routes from "./routes/all";
 import mongoose from "mongoose";
+
+const cors = require('cors');
 const router: Express = express();
 
 /** Importing DotEnv for process.env */
@@ -45,6 +47,7 @@ router.use((req, res, next) => {
 
 /** Routes */
 router.use("/", routes);
+router.use(cors());
 
 /** Error handling */
 router.use((req, res, next) => {
