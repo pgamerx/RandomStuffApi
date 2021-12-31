@@ -9,7 +9,7 @@ const DocsRedirect = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 const MainSiteRedirect = async (req: Request, res: Response, next: NextFunction) => {
-   res.redirect("https://api-docs.pgamerx.com")
+   res.redirect("https://api-info.pgamerx.com")
 }
 
 const Deprecated = async(req:Request, res:Response) => {
