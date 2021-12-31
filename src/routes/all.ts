@@ -62,5 +62,7 @@ router.get("/rapidapi", controller0.RapidApiRedirect)
 router.get("/docs", controller0.DocsRedirect)
 router.get("/", controller0.MainSiteRedirect)
 
+router.get("/register", controller0.RegisterSiteRedirect)
+
 /** Export router */
 export = router;
