@@ -5,8 +5,8 @@ Random Stuff API (RSA) is a powerful API developed by PGamerX, and it's free to 
 Random Stuff API (RSA) is a powerful API developed by [PGamerX](https://github.com/pgamerx), and it's free to use as well as open-sourced. It allows you to get AI responses, jokes, memes, anime, facts, animal images, image manipulation, and many other things.
 
 ## Getting Started
-~~To get started, kindly visit [Getting Started Guide](./Getting%20Started/index.md)~~
-You can head over to the RapidAPI page and checkout code snippets/documentation there!
+~~To get started, kindly visit [Getting Started Guide](./Getting%20Started/index.md)~~.          
+You can head over to the [RapidAPI page](https://rapidapi.com/pgamerxdev/api/random-stuff-api) and checkout code snippets/documentation there!
 
 - Documentation
 For documentation, you can head over to [Documentation](https://api-docs.pgamerx.com/Documentation/Free/ai).
