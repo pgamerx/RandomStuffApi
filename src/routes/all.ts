@@ -9,7 +9,6 @@ import controller9 from '../controllers/weather'
 import controller0 from '../controllers/redirects'
 import controller7 from '../controllers/premium/facts'
 import controller8 from '../controllers/premium/waifu'
-import controller9 from '../controllers/premium/weather'
 const router = express.Router();
 
 /** Main endpoints (Most used) */
