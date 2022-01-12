@@ -45,6 +45,6 @@ const GetWeather = async (req: Request, res: Response, next: NextFunction) => {
     if (error) {
       return res.status(500).send(`Error occured - ${error}`);
     }
-    return res.json([result]);
+    return res.json(result);
   });
 };
