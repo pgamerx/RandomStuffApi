@@ -5,10 +5,10 @@ import controller3 from '../controllers/reddit'
 import controller4 from '../controllers/animals'
 import controller5 from '../controllers/anime'
 import controller6 from '../controllers/canvas'
+import controller9 from '../controllers/weather'
 import controller0 from '../controllers/redirects'
 import controller7 from '../controllers/premium/facts'
 import controller8 from '../controllers/premium/waifu'
-import controller9 from '../controllers/premium/weather'
 const router = express.Router();
 
 /** Main endpoints (Most used) */
