@@ -5,7 +5,7 @@ const RapidApiRedirect = async (req: Request, res: Response, next: NextFunction)
 }
 
 const DocsRedirect = async (req: Request, res: Response, next: NextFunction) => {
-   res.redirect('https://api-docs.pgamerx.com')
+   res.redirect('https://rapidapi.com/pgamerxdev/api/random-stuff-api/specs')
 }
 
 const MainSiteRedirect = async (req: Request, res: Response, next: NextFunction) => {
