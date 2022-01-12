@@ -48,3 +48,5 @@ const GetWeather = async (req: Request, res: Response, next: NextFunction) => {
     return res.json(result);
   });
 };
+
+export default {GetWeather};

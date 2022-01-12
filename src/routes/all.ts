@@ -8,6 +8,7 @@ import controller6 from '../controllers/canvas'
 import controller0 from '../controllers/redirects'
 import controller7 from '../controllers/premium/facts'
 import controller8 from '../controllers/premium/waifu'
+import controller9 from '../controllers/premium/weather'
 const router = express.Router();
 
 /** Main endpoints (Most used) */
@@ -41,6 +42,9 @@ router.get("/anime/cry", controller5.getCryAnime,  );
 
 /** Canvas Endpoint */
 router.get("/canvas/:method", controller6.canvasMethod,  );
+
+/** Weather and Covid Endpoints */
+router.get("/weather", controller9.GetWeather,  );
 
 /** Premium Endpoints */
 /** Facts Endpoint (PREMIUM ONLY) */
