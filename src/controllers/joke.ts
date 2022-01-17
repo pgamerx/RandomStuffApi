@@ -23,14 +23,14 @@ const getJoke = async (req: Request, res: Response, next: NextFunction) => {
       .status(403)
       .send("Your key is invalid, contact for more support.");
 
-  const type = req.query.type as string;
+  const type = req.query.type.toLowerCase() as string;
   const types = [
     "any",
     "dark",
     "pun",
     "spooky",
     "christmas",
-    "Programming",
+    "programming",
     "misc",
   ];
   if (!types.includes(type)) {
