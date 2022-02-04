@@ -83,7 +83,7 @@ const getAIResponse = async (
   const message = raw_response
     .replace("Aco", bot_name)
     .replace("bot_master", bot_master)
-    .replace("9", bot_age)
+    .replace("10", bot_age)
     .replace("Acobot", bot_company)
     .replace("2012", bot_birth_year)
     .replace("acobot.ai", bot_birth_place)
