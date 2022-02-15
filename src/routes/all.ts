@@ -9,6 +9,7 @@ import controller9 from '../controllers/weather'
 import controller0 from '../controllers/redirects'
 import controller7 from '../controllers/premium/facts'
 import controller8 from '../controllers/premium/waifu'
+import controller10 from '../controllers/protected'
 const router = express.Router();
 
 /** Main endpoints (Most used) */
@@ -53,6 +54,12 @@ router.get("/facts/:type", controller7.getFact,  );
 /** Waifu Endpoint (PREMIUM ONLY) */
 router.get("/waifu/sfw", controller8.SfwWaifu,  );
 router.get("/waifu/nsfw", controller8.NsfwWaifu,  );
+
+/** Protected Endpoints */
+router.get("/protected/api/key/:email", controller10.getkey);
+router.get("/protected/api/generate/:email", controller10.genkey);
+router.get("/protected/api/regenerate/:email", controller10.regenkey);
+
 
 /** Redirects */
 

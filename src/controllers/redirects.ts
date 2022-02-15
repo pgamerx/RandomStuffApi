@@ -17,7 +17,7 @@ const Deprecated = async(req:Request, res:Response) => {
 }
 
 const RegisterSiteRedirect = async (req: Request, res: Response, next: NextFunction) => {
-    res.redirect("https://api-docs.pgamerx.com/Getting%20Started/register/")
+    res.redirect("https://api-info.pgamerx.com/manage-key")
  }
 
 export default {
