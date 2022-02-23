@@ -91,4 +91,4 @@ const canvasMethod = async (
   }
 };
 
-export default { canvasMethod };
+export { canvasMethod };

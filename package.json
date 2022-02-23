@@ -16,6 +16,7 @@
     "@types/express": "^4.17.13",
     "@types/morgan": "^1.9.3",
     "ainasepics": "^2.1.7",
+    "anime-wallpaper": "^1.0.2",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "canvacord": "^5.2.3",

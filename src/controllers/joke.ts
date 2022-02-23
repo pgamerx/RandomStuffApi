@@ -1,14 +1,16 @@
 /** Importing NPM modules */
 import { Request, Response, NextFunction } from "express";
-const fetch = require("node-fetch");
 import { isNormal, isPremium } from "../checkers/plan";
+
+/** Import the methods of getting jokes */
+import controller from "./semi-controllers/jokes";
 
 /** Importing DotEnv for process.env */
 import * as dotenv from "dotenv";
 dotenv.config();
 
 const getJoke = async (req: Request, res: Response, next: NextFunction) => {
-  const private_key = process.env.PRIVATE_KEY! as string;
+   const private_key = process.env.PRIVATE_KEY! as string;
   const RapidApi = req.get("x-RapidApi-private") || req.get("RapidApi-private");
   if (RapidApi !== private_key)
     return res
@@ -27,58 +29,40 @@ const getJoke = async (req: Request, res: Response, next: NextFunction) => {
       .status(403)
       .send("Your key is invalid, contact for more support.");
 
-  const type2 = (<string>req?.query?.type).toLowerCase()!;
-  const type =
-    (<string>type2?.charAt(0)).toUpperCase() + (<string>type2)?.slice(1);
-  const types = [
-    "Any",
-    "Dark",
-    "Pun",
-    "Spooky",
-    "Christmas",
-    "Programming",
-    "Misc",
-  ];
-  if (!types?.includes(type)) {
-    return res
-      .status(400)
-      .send(
-        `Invalid Type Provided, kindly provide one of the following types: ${types}`
-      );
-  }
+  const tag = <string>req?.query?.tag || <string>req?.query.type || "any";
+  const tag2 = (tag === "any") ? "any" : tag;
   const blacklist = req.query.blacklist as string;
-  const blacklist_array = [
-    "nsfw",
-    "religious",
-    "political",
-    "racist",
-    "sexist",
-    "explicit",
-  ];
+  const types = await controller.getAllTagsFromAllJokes() as string[];
 
-  if (blacklist) {
-    if (!blacklist_array.includes(blacklist)) {
-      return res
-        .status(400)
-        .send(
-          "Invalid Flag(s) provided, kindly provide one of the following flags: " +
-            blacklist_array
-        );
+  if (tag2 === "any") {
+    if (blacklist) {
+      // Blacklist will be : "tag1,tag2,tag3"
+      // We need to split it into an array of strings
+      const blacklist_array =
+        blacklist.length > 1 ? blacklist.split(",") : [blacklist];
+      const exclude_tags = <string[]>blacklist_array;
+      const joke = await controller.getRandomJoke({exclude_tags})
+      return res.json(joke);
+    } else {
+      const joke = await controller.getRandomJoke();
+      return res.json(joke);
     }
   }
 
+  if(!types.includes(tag)) {
+    return res.status(400).send("Invalid Tag provided, available Tags are: " + types.join(", "));
+  }
   if (blacklist) {
-    const response = await fetch(
-      `https://v2.jokeapi.dev` + `/joke/${type}?blacklistFlags=${blacklist}`
-    );
-    const json = await response.json();
-
-    return res.json(json);
+    // Blacklist will be : "tag1,tag2,tag3"
+    // We need to split it into an array of strings
+    const blacklist_array =
+      blacklist.length > 1 ? blacklist.split(",") : [blacklist];
+    const exclude_tags = <string[]>blacklist_array;
+    const joke = await controller.getRandomJokeWithTag(tag2, { exclude_tags });
+    return res.json(joke);
   } else {
-    const response = await fetch(`https://v2.jokeapi.dev` + `/joke/${type}`);
-    const json = await response.json();
-
-    return res.json(json);
+    const joke = await controller.getRandomJokeWithTag(tag2);
+    return res.json(joke);
   }
 };
 
