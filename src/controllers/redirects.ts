@@ -5,7 +5,7 @@ const RapidApiRedirect = async (req: Request, res: Response, next: NextFunction)
 }
 
 const DocsRedirect = async (req: Request, res: Response, next: NextFunction) => {
-   res.redirect('https://rapidapi.com/pgamerxdev/api/random-stuff-api/specs')
+   res.redirect('https://api-docs.pgamerx.com')
 }
 
 const MainSiteRedirect = async (req: Request, res: Response, next: NextFunction) => {
@@ -13,7 +13,7 @@ const MainSiteRedirect = async (req: Request, res: Response, next: NextFunction)
 }
 
 const Deprecated = async(req:Request, res:Response) => {
-    res.send(400).send("Hey there, we have deprecated our old version and now we can only be operated through RapidApi. Kindly headover to https://api.pgamerx.com/new for more information ")
+    res.json(["Hey there, we have deprecated our old version and now we can only be operated through RapidApi. Kindly headover to https://api.pgamerx.com/new for more information"])
 }
 
 const RegisterSiteRedirect = async (req: Request, res: Response, next: NextFunction) => {
