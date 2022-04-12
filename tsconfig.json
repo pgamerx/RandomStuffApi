@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+      "forceConsistentCasingInFileNames": true,
+      "module": "commonjs",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "outDir": "./build",
+      "rootDir": "./src",
+      "target": "es6",
+      "skipLibCheck": true,
+      "strict": true
+  }
+}
