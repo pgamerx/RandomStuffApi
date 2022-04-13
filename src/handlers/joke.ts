@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 
 import jokeHandler from "../handlers/subHandlers/getJoke"
 interface Joke {
-    joke: string;
+    message: string;
     tags: string[];
 }
 
@@ -20,7 +20,7 @@ const getRandomJoke = async (req: Request, res: Response, next: NextFunction) =>
     })
 
     return res.status(200).json(<Joke>{
-        joke: joke.joke,
+        message: joke.joke,
         tags: joke.tags
     })
 };
@@ -38,7 +38,7 @@ const getJokeWithTag = async (req: Request, res: Response, next: NextFunction) =
     });
 
     return res.status(200).json(<Joke>{
-        joke: joke.joke,
+        message: joke.joke,
         tags: joke.tags
     })
 };

@@ -30,7 +30,6 @@ const minute_rateLimiter = rateLimit({
 
     },
     message: {
-        code: 429,
         message: "You have exceeded your rate limit for this endpoint. Please purchase a premium plan to enjoy increased rate limit or wait for your current rate limit to expire.",
     },
     standardHeaders: true
@@ -63,7 +62,6 @@ const daily_rateLimiter = rateLimit({
 
     },
     message: {
-        code: 429,
         message: "You have exceeded your rate limit for this endpoint. Please purchase a premium plan to enjoy increased rate limit or wait for your current rate limit to expire.",
     },
     standardHeaders: true

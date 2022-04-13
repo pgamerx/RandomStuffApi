@@ -15,6 +15,7 @@ mongoose.connect(
 );
 
 import joke_routes from './routes/joke';
+import ai_routes from './routes/ai';
 
 const router: Express = express();
 
@@ -41,10 +42,11 @@ router.use((req, res, next) => {
 
 /** Routes */
 router.use('/joke', joke_routes);
+router.use('/ai', ai_routes);
 
 /** Error handling */
 router.use((req, res, next) => {
-    const error = new Error('not found');
+    const error = new Error('Invalid route, please check the request url');
     return res.status(404).json({
         message: error.message
     });
