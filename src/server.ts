@@ -4,6 +4,16 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 
 
+import mongoose from 'mongoose';
+/** Importing DotEnv for process.env */
+import * as dotenv from "dotenv";
+dotenv.config();
+
+/** Connecting to DB */
+mongoose.connect(
+    process.env.MONGO_STRING! as string,
+);
+
 import joke_routes from './routes/joke';
 
 const router: Express = express();

@@ -2,3 +2,7 @@ node_modules/
 /node_modules
 node_modules
 .env
+
+# The mac files
+.DS_Store
+.DS_STORE

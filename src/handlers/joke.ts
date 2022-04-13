@@ -1,6 +1,5 @@
 /** source/controllers/posts.ts */
 import { Request, Response, NextFunction } from 'express';
-import axios, { AxiosResponse } from 'axios';
 
 import jokeHandler from "../handlers/subHandlers/getJoke"
 interface Joke {
