@@ -36,9 +36,6 @@ const RegisterAi = async (req: Request, res: Response, next: NextFunction) => {
 
     // Check if all of these fields are present in the request
 
-    // TODO: Save the user and api key to the database.
-
-
     const doc = await auth.findOneAndUpdate({
         key: key
     }, {
@@ -102,7 +99,7 @@ const GetAiResponse = async (req: Request, res: Response, next: NextFunction) =>
     })
 
     if (!doc) {
-        return res.status(400).json({
+        return res.status(401).json({
             message: `Could not find the account linked with ${key}, are you sure it exists?`
         });
     }

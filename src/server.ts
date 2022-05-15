@@ -16,6 +16,8 @@ mongoose.connect(
 
 import joke_routes from './routes/joke';
 import ai_routes from './routes/ai';
+import anime_routes from './routes/anime';
+import captcha_routes from './routes/captcha';
 
 const router: Express = express();
 
@@ -42,7 +44,12 @@ router.use((req, res, next) => {
 
 /** Routes */
 router.use('/joke', joke_routes);
+
 router.use('/ai', ai_routes);
+
+router.use('/anime', anime_routes);
+
+router.use('/captcha', captcha_routes);
 
 /** Error handling */
 router.use((req, res, next) => {
