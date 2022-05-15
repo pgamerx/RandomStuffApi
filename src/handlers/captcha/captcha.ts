@@ -1,7 +1,7 @@
 import { CaptchaGenerator } from "captcha-canvas";
 import { Request, Response } from "express";
 
-import auth from "../models/auth";
+import auth from "../../models/auth";
 
 const ReturnCaptchaAndText = async (req: Request, res: Response) => {
     const key = req.get("Authorization");

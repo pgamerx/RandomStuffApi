@@ -2,6 +2,8 @@
 import { Request, Response, NextFunction } from 'express';
 
 import jokeHandler from "../handlers/subHandlers/getJoke"
+
+import auth from "../models/auth";
 interface Joke {
     message: string;
     tags: string[];
@@ -10,7 +12,20 @@ interface Joke {
 
 // Return a random joke
 const getRandomJoke = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: Implement API Keys and rate limit
+    const key = req.get("Authorization");
+    if (!key) {
+        return res.status(401).json({
+            message: "No Auth Token provided"
+        });
+    }
+    const user = await auth.findOne({
+        key: key
+    })
+    if (!user) {
+        return res.status(400).json({
+            message: `Could not find the account linked with ${key}, are you sure it exists?`
+        });
+    }
 
     const exclude = req.query.exclude as string || ""
     const exclude_tags = exclude ? exclude.split(',') : [];
@@ -26,8 +41,20 @@ const getRandomJoke = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 const getJokeWithTag = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: Implement API Keys and rate limit
-
+    const key = req.get("Authorization");
+    if (!key) {
+        return res.status(401).json({
+            message: "No Auth Token provided"
+        });
+    }
+    const user = await auth.findOne({
+        key: key
+    })
+    if (!user) {
+        return res.status(400).json({
+            message: `Could not find the account linked with ${key}, are you sure it exists?`
+        });
+    }
     const tag = req.params.tag as string;
     const exclude = req.query.exclude as string || ""
 
@@ -44,8 +71,6 @@ const getJokeWithTag = async (req: Request, res: Response, next: NextFunction) =
 };
 
 const getAllJokesTags = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: Implement API Keys and rate limit
-
     const tags = await jokeHandler.getAllTagsFromAllJokes();
 
     const simplified_tags = tags.map(tag => {
