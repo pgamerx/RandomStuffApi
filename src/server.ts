@@ -3,6 +3,7 @@ import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
 
+import { daily_rateLimiter, minute_rateLimiter, captcha_minute_rateLimiter } from './ratelimit/ratelimit_all';
 
 import mongoose from 'mongoose';
 /** Importing DotEnv for process.env */
@@ -18,6 +19,8 @@ import joke_routes from './routes/joke';
 import ai_routes from './routes/ai';
 import anime_routes from './routes/anime';
 import captcha_routes from './routes/captcha';
+import reddit_routes from './routes/reddit';
+
 
 const router: Express = express();
 
@@ -43,13 +46,15 @@ router.use((req, res, next) => {
 });
 
 /** Routes */
-router.use('/joke', joke_routes);
+router.use('/joke', joke_routes, daily_rateLimiter, minute_rateLimiter);
 
-router.use('/ai', ai_routes);
+router.use('/ai', ai_routes, daily_rateLimiter, minute_rateLimiter);
 
-router.use('/anime', anime_routes);
+router.use('/anime', anime_routes, daily_rateLimiter, minute_rateLimiter);
 
-router.use('/captcha', captcha_routes);
+router.use('/captcha', captcha_routes, captcha_minute_rateLimiter, daily_rateLimiter);
+
+router.use('/reddit', reddit_routes, daily_rateLimiter, minute_rateLimiter);
 
 /** Error handling */
 router.use((req, res, next) => {
