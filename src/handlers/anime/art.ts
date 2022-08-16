@@ -2,10 +2,6 @@ import { Request, Response } from "express";
 const reddit = require('reddit.images')
 
 import auth from '../../models/auth'
-/** Importing DotEnv for process.env */
-import * as dotenv from "dotenv";
-dotenv.config();
-
 const GetAnimeart = async (req: Request, res: Response) => {
 
     const key = req.get("Authorization");

@@ -5,10 +5,6 @@ const reddit = require("reddit.images");
 import auth from "../models/auth";
 
 
-/** Importing DotEnv for process.env */
-import * as dotenv from "dotenv";
-dotenv.config();
-
 const fetchRandomMeme = async (
     req: Request,
     res: Response,

@@ -5,10 +5,10 @@ const router = express.Router();
 
 
 /** Reddit endpoints */
-router.get("/reddit/RandomMeme", controller.fetchRandomMeme);
-router.get("/reddit/FetchSubredditPost", controller.fetchImageFromSubReddit);
-router.get("/reddit/fetchPostById", controller.fetchPostById);
-router.get("/reddit/FetchRandomPost", controller.FetchRandomPost);
-router.get("/reddit/FetchPost", controller.FetchPost);
+router.get("/RandomMeme", controller.fetchRandomMeme);
+router.get("/FetchSubredditPost", controller.fetchImageFromSubReddit);
+router.get("/fetchPostById", controller.fetchPostById);
+router.get("/FetchRandomPost", controller.FetchRandomPost);
+router.get("/FetchPost", controller.FetchPost);
 
 export = router;

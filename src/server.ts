@@ -6,13 +6,11 @@ import morgan from 'morgan';
 import { daily_rateLimiter, minute_rateLimiter, captcha_minute_rateLimiter } from './ratelimit/ratelimit_all';
 
 import mongoose from 'mongoose';
-/** Importing DotEnv for process.env */
-import * as dotenv from "dotenv";
-dotenv.config();
 
+import {MONGO_STRING, bs_key, bs_bid} from './cred';
 /** Connecting to DB */
 mongoose.connect(
-    process.env.MONGO_STRING! as string,
+   MONGO_STRING
 );
 
 import joke_routes from './routes/joke';
@@ -56,6 +54,10 @@ router.use('/captcha', captcha_routes, captcha_minute_rateLimiter, daily_rateLim
 
 router.use('/reddit', reddit_routes, daily_rateLimiter, minute_rateLimiter);
 
+router.get('/docs', (req, res) => {
+    res.redirect("https://documenter.getpostman.com/view/19748581/VUjTjhiQ")
+} );
+
 /** Error handling */
 router.use((req, res, next) => {
     const error = new Error('Invalid route, please check the request url');
@@ -66,5 +68,5 @@ router.use((req, res, next) => {
 
 /** Server */
 const httpServer = http.createServer(router);
-const PORT: any = process.env.PORT ?? 6060;
+const PORT: any = 1919;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));

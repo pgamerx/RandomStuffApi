@@ -6,7 +6,8 @@ import auth from '../models/auth'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const { bs_bid, bs_key } = process.env
+import {MONGO_STRING, bs_key, bs_bid} from './../cred';
+
 
 interface AIInfo {
     BotName: string;
@@ -33,6 +34,8 @@ const RegisterAi = async (req: Request, res: Response, next: NextFunction) => {
     const key = req.get("Authorization")
     const body = req.body;
     const { BotName, BotAge, BotLocation, BotBirthYear, BotBirthDate, BotBirthMonth, BotCompany, BotBirthPlace, BotGender, BotFavActor, BotFavArtist, BotFavActress, BotFavBand, BotFavColor, BotFavBook, BotEmail, BotBuild, BotMaster } = body
+
+    console.log(body)
 
     // Check if all of these fields are present in the request
 
@@ -65,7 +68,7 @@ const RegisterAi = async (req: Request, res: Response, next: NextFunction) => {
 
     if (!doc) {
         return res.status(400).json({
-            message: `Could not find the account linked with ${key}, are you sure it exists?`
+            message: `Could not find an account linked with ${key}, are you sure it exists?`
         });
     }
 
@@ -100,7 +103,7 @@ const GetAiResponse = async (req: Request, res: Response, next: NextFunction) =>
 
     if (!doc) {
         return res.status(401).json({
-            message: `Could not find the account linked with ${key}, are you sure it exists?`
+            message: `Could not find an account linked with ${key}, are you sure it exists?`
         });
     }
 
@@ -150,6 +153,8 @@ const GetAiResponse = async (req: Request, res: Response, next: NextFunction) =>
     // Get response from brainshop
     const response = await fetch(`http://api.brainshop.ai/get?bid=${bs_bid}&key=${bs_key}&uid=${user_id}&msg=${message}`)
     const json = await response.json() as any
+
+    console.log(json)
 
     const raw_response = json["cnt"]
 

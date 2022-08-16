@@ -4,9 +4,6 @@ import { AnimeWallpaper } from "anime-wallpaper";
 const wall = new AnimeWallpaper();
 
 import auth from '../../models/auth'
-/** Importing DotEnv for process.env */
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const getAnimeImage = async (
     req: Request,
